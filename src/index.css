@@ -13,3 +13,7 @@
   --color-warm-gray: oklch(0.7 0.02 60);
   --color-warm-dark: oklch(0.25 0.02 30);
 }
+
+html {
+  scroll-behavior: smooth;
+}
