@@ -7,6 +7,7 @@ import {
   FormSelect,
   FormTextarea,
 } from '../../components/common';
+import { useCreateBooking } from '../../hooks';
 import { type IBookingFormData } from '../../types';
 
 const timeSlots = [
@@ -40,6 +41,7 @@ const partySizes = [
 
 const BookingPage = () => {
   const navigate = useNavigate();
+  const { createBooking, loading, error } = useCreateBooking();
   const {
     register,
     handleSubmit,
@@ -48,9 +50,12 @@ const BookingPage = () => {
 
   const today = new Date().toISOString().split('T')[0];
 
-  const onSubmit = (data: IBookingFormData) => {
-    console.log('Booking submitted:', data);
-    navigate('/booking-confirmation', { state: data });
+  const onSubmit = async (data: IBookingFormData) => {
+    const success = await createBooking(data);
+
+    if (success) {
+      navigate('/booking-confirmation', { state: data });
+    }
   };
 
   return (
@@ -86,6 +91,12 @@ const BookingPage = () => {
             onSubmit={handleSubmit(onSubmit)}
             className="border-cream/5 bg-cream/5 flex flex-col gap-6 rounded-2xl border p-8"
           >
+            {error && (
+              <p className="rounded-lg bg-red-400/10 px-4 py-3 text-sm text-red-400">
+                {error}
+              </p>
+            )}
+
             <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
               <FormInput
                 label="Full Name"
@@ -155,9 +166,10 @@ const BookingPage = () => {
 
             <button
               type="submit"
-              className="bg-burgundy font-display text-cream hover:bg-burgundy-light mt-2 w-full rounded-lg px-8 py-3.5 text-sm font-medium tracking-wide transition-colors"
+              disabled={loading}
+              className="bg-burgundy font-display text-cream hover:bg-burgundy-light mt-2 w-full rounded-lg px-8 py-3.5 text-sm font-medium tracking-wide transition-colors disabled:cursor-not-allowed disabled:opacity-50"
             >
-              Confirm Reservation
+              {loading ? 'Reserving...' : 'Confirm Reservation'}
             </button>
           </form>
         </AnimatedElement>
