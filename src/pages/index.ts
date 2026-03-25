@@ -1,3 +1,4 @@
+export { AdminDashboardPage } from './AdminDashboardPage';
 export { BookingPage } from './BookingPage';
 export { ConfirmationPage } from './ConfirmationPage';
 export { HomePage } from './HomePage';
