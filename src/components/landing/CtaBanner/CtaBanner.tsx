@@ -30,7 +30,7 @@ const CtaBanner = () => {
 
             <AnimatedElement mode="scroll" delay={0.3}>
               <Button
-                href="#book"
+                href="/book"
                 variant="outline"
                 className="border-cream/30 text-cream hover:border-cream/60"
               >

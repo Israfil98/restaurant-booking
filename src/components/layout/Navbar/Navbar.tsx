@@ -18,12 +18,16 @@ const Navbar = () => {
     <nav className="border-burgundy/10 bg-cream/80 fixed top-0 right-0 left-0 z-50 border-b backdrop-blur-lg">
       <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
         {/* Logo */}
-        <a href="#" className="flex items-center gap-2">
+        <Link
+          to="/"
+          onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+          className="flex items-center gap-2"
+        >
           <Logo size={28} />
           <span className="font-display text-burgundy text-2xl font-bold">
             Dinespot
           </span>
-        </a>
+        </Link>
 
         {/* Desktop nav */}
         <div className="hidden items-center gap-8 md:flex">
@@ -47,7 +51,7 @@ const Navbar = () => {
             ),
           )}
 
-          <Button href="#book" className="px-5 py-2.5">
+          <Button href="/book" className="px-5 py-2.5">
             Book a Table
           </Button>
         </div>
@@ -94,7 +98,11 @@ const Navbar = () => {
                 ),
               )}
 
-              <Button href="#book" className="px-5 py-2.5 text-center">
+              <Button
+                href="/book"
+                className="px-5 py-2.5 text-center"
+                onClick={() => setIsOpen(false)}
+              >
                 Book a Table
               </Button>
             </div>
