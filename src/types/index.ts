@@ -4,7 +4,8 @@ export interface IMenuItem {
   description: string;
   price: number;
   category: string;
-  image: string;
+  image_url: string | null;
+  available: boolean;
 }
 
 export interface ITestimonial {
@@ -38,4 +39,16 @@ export interface IBookingFormData {
   time: string;
   partySize: string;
   notes: string;
+}
+
+export interface IBooking {
+  id: string;
+  customer_name: string;
+  customer_email: string;
+  date: string;
+  time: string;
+  party_size: number;
+  status: 'Pending' | 'Confirmed' | 'Cancelled';
+  notes: string | null;
+  created_at: string;
 }
