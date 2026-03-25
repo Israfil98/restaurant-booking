@@ -17,3 +17,8 @@
 html {
   scroll-behavior: smooth;
 }
+
+input[type='date'] {
+  width: -webkit-fill-available;
+  width: 100%;
+}

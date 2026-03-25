@@ -34,8 +34,8 @@ const Hero = () => {
           delay={0.45}
           className="flex flex-col items-center justify-center gap-4 sm:flex-row"
         >
-          <Button href="#book">Book a Table</Button>
-          <Button href="#menu" variant="outline">
+          <Button href="/book">Book a Table</Button>
+          <Button href="/menu" variant="outline">
             View Menu
           </Button>
         </AnimatedElement>

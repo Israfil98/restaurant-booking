@@ -30,3 +30,12 @@ export interface IRestaurantInfo {
     url: string;
   }[];
 }
+
+export interface IBookingFormData {
+  name: string;
+  email: string;
+  date: string;
+  time: string;
+  partySize: string;
+  notes: string;
+}
