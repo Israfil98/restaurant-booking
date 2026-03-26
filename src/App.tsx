@@ -5,6 +5,7 @@ import { ScrollToTop } from './components/common';
 import { Footer, Navbar } from './components/layout';
 import {
   AdminDashboardPage,
+  AdminMenuPage,
   BookingPage,
   ConfirmationPage,
   HomePage,
@@ -33,6 +34,7 @@ const App = () => {
 
           <Route element={<ProtectedRoute />}>
             <Route path="/admin" element={<AdminDashboardPage />} />
+            <Route path="/admin/menu" element={<AdminMenuPage />} />
           </Route>
         </Routes>
       </main>

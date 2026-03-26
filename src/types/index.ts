@@ -52,3 +52,11 @@ export interface IBooking {
   notes: string | null;
   created_at: string;
 }
+
+export interface IMenuItemFormData {
+  name: string;
+  description: string;
+  price: string;
+  category: string;
+  available: boolean;
+}

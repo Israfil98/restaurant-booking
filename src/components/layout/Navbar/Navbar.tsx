@@ -13,7 +13,10 @@ const publicLinks = [
   { label: 'Contact', href: '/#contact' },
 ];
 
-const adminLinks = [{ label: 'Dashboard', href: '/admin' }];
+const adminLinks = [
+  { label: 'Dashboard', href: '/admin' },
+  { label: 'Menu Items', href: '/admin/menu' },
+];
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
