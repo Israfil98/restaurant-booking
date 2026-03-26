@@ -1,4 +1,4 @@
-import { Route, Routes } from 'react-router';
+import { Route, Routes, useLocation } from 'react-router';
 
 import { ProtectedRoute, PublicRoute } from './components/auth';
 import { ScrollToTop } from './components/common';
@@ -13,6 +13,9 @@ import {
 } from './pages';
 
 const App = () => {
+  const { pathname } = useLocation();
+  const isAdminRoute = pathname.startsWith('/admin');
+
   return (
     <div className="bg-cream">
       <ScrollToTop />
@@ -33,7 +36,7 @@ const App = () => {
           </Route>
         </Routes>
       </main>
-      <Footer />
+      {!isAdminRoute && <Footer />}
     </div>
   );
 };
