@@ -2,17 +2,24 @@ import { AnimatePresence, motion } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
 import { useState } from 'react';
 import { Link } from 'react-router';
+
+import { useAuthStore } from '../../../stores';
 import { Button, Logo } from '../../common';
 
-const navLinks = [
+const publicLinks = [
   { label: 'About', href: '/#about' },
   { label: 'Menu', href: '/menu' },
   { label: 'Testimonials', href: '/#testimonials' },
   { label: 'Contact', href: '/#contact' },
 ];
 
+const adminLinks = [{ label: 'Dashboard', href: '/admin' }];
+
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const { user } = useAuthStore();
+
+  const navLinks = user ? adminLinks : publicLinks;
 
   return (
     <nav className="border-burgundy/10 bg-cream/80 fixed top-0 right-0 left-0 z-50 border-b backdrop-blur-lg">
@@ -51,9 +58,11 @@ const Navbar = () => {
             ),
           )}
 
-          <Button href="/book" className="px-5 py-2.5">
-            Book a Table
-          </Button>
+          {!user && (
+            <Button href="/book" className="px-5 py-2.5">
+              Book a Table
+            </Button>
+          )}
         </div>
 
         {/* Mobile hamburger */}
@@ -98,13 +107,15 @@ const Navbar = () => {
                 ),
               )}
 
-              <Button
-                href="/book"
-                className="px-5 py-2.5 text-center"
-                onClick={() => setIsOpen(false)}
-              >
-                Book a Table
-              </Button>
+              {!user && (
+                <Button
+                  href="/book"
+                  className="px-5 py-2.5 text-center"
+                  onClick={() => setIsOpen(false)}
+                >
+                  Book a Table
+                </Button>
+              )}
             </div>
           </motion.div>
         )}

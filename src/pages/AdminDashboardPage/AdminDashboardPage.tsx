@@ -2,7 +2,7 @@ import { LogOut } from 'lucide-react';
 import { useState } from 'react';
 
 import { BookingCard, BookingsTable } from '../../components/admin';
-import { AnimatedElement } from '../../components/common';
+import { AnimatedElement, LoadingSpinner } from '../../components/common';
 import { useAuth, useBookings } from '../../hooks';
 import { BOOKING_STATUSES } from '../../lib/constants';
 import { type IBooking } from '../../types';
@@ -51,7 +51,7 @@ const AdminDashboardPage = () => {
   };
 
   return (
-    <section className="bg-warm-dark py-32 sm:py-40">
+    <section className="bg-warm-dark min-h-screen py-32 sm:py-40">
       <div className="mx-auto max-w-6xl px-6">
         {/* Header */}
         <div className="mb-12 flex items-center justify-between">
@@ -120,9 +120,7 @@ const AdminDashboardPage = () => {
         </AnimatedElement>
 
         {/* Loading */}
-        {loading && (
-          <p className="text-warm-gray text-center">Loading bookings...</p>
-        )}
+        {loading && <LoadingSpinner />}
 
         {/* Error */}
         {error && <p className="text-center text-red-400">{error}</p>}

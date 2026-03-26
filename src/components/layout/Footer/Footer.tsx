@@ -1,5 +1,6 @@
 import { Facebook, Instagram, Twitter } from 'lucide-react';
 
+import { Link } from 'react-router';
 import { restaurantInfo } from '../../../data';
 import { Logo } from '../../common';
 
@@ -80,11 +81,17 @@ const Footer = () => {
         </div>
 
         {/* Bottom bar */}
-        <div className="border-cream/10 text-warm-gray mt-12 border-t pt-8 text-center text-sm">
+        <div className="border-cream/10 text-warm-gray mt-12 flex items-center justify-between border-t pt-8 text-sm">
           <p>
             &copy; {new Date().getFullYear()} {restaurantInfo.name}. All rights
             reserved.
           </p>
+          <Link
+            to="/login"
+            className="text-warm-gray/50 hover:text-warm-gray transition-colors"
+          >
+            Admin
+          </Link>
         </div>
       </div>
     </footer>

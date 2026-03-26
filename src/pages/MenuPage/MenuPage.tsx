@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-import { AnimatedElement } from '../../components/common';
+import { AnimatedElement, LoadingSpinner } from '../../components/common';
 import { useMenuItems } from '../../hooks';
 import { MENU_CATEGORIES } from '../../lib/constants';
 
@@ -63,9 +63,7 @@ const MenuPage = () => {
         </AnimatedElement>
 
         {/* Loading state */}
-        {loading && (
-          <p className="text-warm-gray text-center">Loading menu...</p>
-        )}
+        {loading && <LoadingSpinner />}
 
         {/* Error state */}
         {error && <p className="text-center text-red-400">{error}</p>}
